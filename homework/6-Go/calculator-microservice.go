@@ -38,7 +38,7 @@ func sum(w http.ResponseWriter, r *http.Request) {
 	} else {
 		result := fmt.Sprintf("%d + %d = %d", a, b, a+b)
 		save(result)
-		fmt.Fprintf(w, result)
+		fmt.Fprint(w, result)
 	}
 }
 
@@ -49,7 +49,7 @@ func sub(w http.ResponseWriter, r *http.Request) {
 	} else {
 		result := fmt.Sprintf("%d - %d = %d", a, b, a-b)
 		save(result)
-		fmt.Fprintf(w, result)
+		fmt.Fprint(w, result)
 	}
 }
 
@@ -60,7 +60,7 @@ func mul(w http.ResponseWriter, r *http.Request) {
 	} else {
 		result := fmt.Sprintf("%d * %d = %d", a, b, a*b)
 		save(result)
-		fmt.Fprintf(w, result)
+		fmt.Fprint(w, result)
 	}
 }
 
