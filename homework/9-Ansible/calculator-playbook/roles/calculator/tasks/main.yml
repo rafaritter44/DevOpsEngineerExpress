@@ -1,0 +1,4 @@
+---
+
+- name: Run calculator microservice
+  shell: nohup go run roles/calculator/files/calculator-microservice.go &
