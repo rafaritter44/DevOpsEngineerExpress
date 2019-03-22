@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function createMicroserviceContainer() {
-    docker create --name calculator -p 8080:8080 devops/calculator .
+    docker create --name calculator -p 8080:8080 devops/calculator
 }
 
 function removeMicroserviceContainer() {
