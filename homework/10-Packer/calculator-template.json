@@ -1,0 +1,38 @@
+{
+    "builders": [{
+        "type": "docker",
+        "image": "ubuntu",
+        "commit": true,
+        "changes": [
+            "ENTRYPOINT [ \"/bin/bash\", \"-c\", \"calculator-microservice\" ]",
+            "EXPOSE 8080"
+        ]
+    }],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "apt-get update",
+                "apt-get upgrade -y",
+                "apt-get install python -y",
+                "apt-get install ansible -y"
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "calculator-playbook",
+            "playbook_file": "calculator-playbook/calculator.yml"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "apt-get remove ansible -y",
+                "apt-get remove python -y"
+            ]
+        }
+    ],
+    "post-processors": [{
+        "type": "docker-tag",
+        "repository": "packer/calculator"
+    }]
+  }

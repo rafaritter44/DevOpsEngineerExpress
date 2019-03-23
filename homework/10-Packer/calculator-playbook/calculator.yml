@@ -1,0 +1,9 @@
+---
+
+- name: Provision Golang calculator microservice
+  become: yes
+  hosts: localhost
+  roles:
+    - base
+    - go
+    - calculator

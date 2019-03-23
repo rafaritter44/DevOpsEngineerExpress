@@ -1,0 +1,10 @@
+---
+
+- name: Build calculator microservice
+  shell: go build roles/calculator/files/calculator-microservice.go
+
+- name: Copy calculator microservice from local files to executable directory
+  copy:
+    src: calculator-microservice
+    dest: /usr/local/bin
+    mode: +x
