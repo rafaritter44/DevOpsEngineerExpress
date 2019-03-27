@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function validate_number_of_arguments() {
     if (( $# != 3 )) ; then
         display_usage_and_exit
