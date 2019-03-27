@@ -41,4 +41,4 @@ validate_number "$x"
 validate_operation "$operation"
 validate_number "$y"
 
-calculate "$1" "$2" "$3"
+calculate "$x" "$operation" "$y"
