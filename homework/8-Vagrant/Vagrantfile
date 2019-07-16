@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+    config.vm.box = "ubuntu/bionic64"
+    config.vm.network "private_network", ip: "55.55.55.5"
+    config.vm.provision "shell", inline: "sudo apt-get update"
+    config.vm.provision "shell", inline: "sudo apt-get install -y golang-go"
+    config.vm.provision "file", source: "calculator-microservice.go", destination: "/home/vagrant/calculator-microservice.go"
+    config.vm.provision "shell", inline: "go build /home/vagrant/calculator-microservice.go"
+    config.vm.provision "shell", inline: "nohup /home/vagrant/calculator-microservice &", privileged: false
+    config.vm.provision "file", source: "Vagrantfile", destination: "/home/vagrant/Vagrantfile"
+  end
